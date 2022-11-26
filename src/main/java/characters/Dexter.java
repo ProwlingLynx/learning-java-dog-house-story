@@ -1,4 +1,7 @@
 package characters;
 
-public class Dexter {
+import templates.IDog;
+import templates.StoryCharacter;
+
+public class Dexter extends StoryCharacter implements IDog {
 }
