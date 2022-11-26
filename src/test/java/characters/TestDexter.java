@@ -26,4 +26,24 @@ class TestDexter {
         }
     }
 
+    @Nested
+    @DisplayName("Interface method tests")
+    class TestInterfaceMethods{
+        Dexter dexter;
+        @BeforeEach
+        void create_new_dexter(){
+            dexter = new Dexter();
+        }
+
+        @Test
+        void should_return_string(){
+//            given
+            String expected = "Woof!";
+//            when
+            String actual = dexter.speak();
+//            then
+            assertEquals(expected, actual);
+        }
+    }
+
 }
