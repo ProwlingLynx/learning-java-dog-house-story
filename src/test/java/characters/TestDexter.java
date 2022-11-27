@@ -36,12 +36,37 @@ class TestDexter {
         }
 
         @Test
-        void should_return_string(){
+        void speak_should_return_woof_string(){
 //            given
             String expected = "Woof!";
 //            when
             String actual = dexter.speak();
 //            then
+            assertEquals(expected, actual);
+        }
+
+        @Test
+        void beg_should_return_string(){
+            String expected = "*Whine!*";
+            String actual = dexter.beg();
+            assertEquals(expected, actual);
+        }
+        @Test
+        void chew_should_return_string(){
+            String expected = "GrrNomNom";
+            String actual = dexter.beg();
+            assertEquals(expected, actual);
+        }
+        @Test
+        void wagTail_should_return_string(){
+            String expected = "Happy Tail Wag!";
+            String actual = dexter.wagTail();
+            assertEquals(expected, actual);
+        }
+        @Test
+        void eat_should_return_string(){
+            String expected = "Nom!";
+            String actual = dexter.eat();
             assertEquals(expected, actual);
         }
     }
