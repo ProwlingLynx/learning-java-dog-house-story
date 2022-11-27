@@ -54,7 +54,7 @@ class TestDexter {
         @Test
         void chew_should_return_string(){
             String expected = "GrrNomNom";
-            String actual = dexter.beg();
+            String actual = dexter.chew();
             assertEquals(expected, actual);
         }
         @Test
