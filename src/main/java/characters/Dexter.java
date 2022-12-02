@@ -4,28 +4,33 @@ import templates.IDog;
 import templates.StoryCharacter;
 
 public class Dexter extends StoryCharacter implements IDog {
+    private String breed;
+    public Dexter(){
+        super("Dexter", "Main Character");
+        breed = "Husky";
+    }
     @Override
-    public String speak(){
-        return "Woof!";
+    public void speak(){
+        System.out.println("Woof!");
     }
 
     @Override
-    public String beg() {
-        return "*Whine!*";
+    public void beg() {
+        System.out.println("*Whine!*");
     }
 
     @Override
-    public String wagTail() {
-        return "Happy Tail Wag!";
+    public void wagTail() {
+        System.out.println("Happy Tail Wag!");
     }
 
     @Override
-    public String eat() {
-        return "Nom!";
+    public void eat() {
+        System.out.println("Nom!");
     }
 
     @Override
-    public String chew() {
-        return "GrrNomNom";
+    public void chew() {
+        System.out.println("GrrNomNom");
     }
 }
