@@ -8,5 +8,8 @@ public class Story {
         System.out.println("Here is Dexter right now.");
         Dexter dexter = new Dexter();
         dexter.speak();
+        System.out.println("Dexter is not alone. His family is currently cooking. And Dexter is always looking for" +
+                "a quick snack.");
+        dexter.speak();
     }
 }
