@@ -4,9 +4,13 @@ import org.junit.jupiter.api.*;
 import templates.IDog;
 import templates.StoryCharacter;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TestDexter {
+
     @Nested
     @DisplayName("Check if Dexter implements IDog and StoryCharacter")
     class CheckParents {
@@ -30,6 +34,18 @@ class TestDexter {
     @DisplayName("Interface method tests")
     class TestInterfaceMethods{
         Dexter dexter;
+        private final ByteArrayOutputStream capturedOutput = new ByteArrayOutputStream();
+        private final PrintStream original = System.out;
+
+        @BeforeEach
+        void set_up_byteStreamArray(){
+            System.setOut(new PrintStream(capturedOutput));
+        }
+
+        @AfterEach
+        void restore_original_output(){
+            System.setOut(original);
+        }
         @BeforeEach
         void create_new_dexter(){
             dexter = new Dexter();
@@ -38,36 +54,36 @@ class TestDexter {
         @Test
         void speak_should_return_woof_string(){
 //            given
-            String expected = "Woof!";
+            String expected = "Woof!\r\n";
 //            when
-            String actual = dexter.speak();
+            dexter.speak();
 //            then
-            assertEquals(expected, actual);
+            assertEquals(expected, capturedOutput.toString());
         }
 
         @Test
         void beg_should_return_string(){
-            String expected = "*Whine!*";
-            String actual = dexter.beg();
-            assertEquals(expected, actual);
+            String expected = "*Whine!*\r\n";
+            dexter.beg();
+            assertEquals(expected, capturedOutput.toString());
         }
         @Test
         void chew_should_return_string(){
-            String expected = "GrrNomNom";
-            String actual = dexter.chew();
-            assertEquals(expected, actual);
+            String expected = "GrrNomNom\r\n";
+            dexter.chew();
+            assertEquals(expected, capturedOutput.toString());
         }
         @Test
         void wagTail_should_return_string(){
-            String expected = "Happy Tail Wag!";
-            String actual = dexter.wagTail();
-            assertEquals(expected, actual);
+            String expected = "Happy Tail Wag!\r\n";
+            dexter.wagTail();
+            assertEquals(expected, capturedOutput.toString());
         }
         @Test
         void eat_should_return_string(){
-            String expected = "Nom!";
-            String actual = dexter.eat();
-            assertEquals(expected, actual);
+            String expected = "Nom!\r\n";
+            dexter.eat();
+            assertEquals(expected, capturedOutput.toString());
         }
     }
 
